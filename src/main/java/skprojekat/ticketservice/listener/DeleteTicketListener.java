@@ -25,8 +25,8 @@ public class DeleteTicketListener {
 		try {
 			String jsonText = ((TextMessage)message).getText();
 			try {
-				Integer id = objectMapper.readValue(jsonText, Integer.class);
-				System.out.println(id);
+				Integer flightId = objectMapper.readValue(jsonText, Integer.class);
+				System.out.println(flightId);
 			} catch (JsonMappingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
