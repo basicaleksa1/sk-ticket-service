@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import skprojekat.ticketservice.dto.TicketDto;
 import skprojekat.ticketservice.model.Ticket;
 
 @Service
@@ -15,5 +16,5 @@ public interface TicketService {
 	
 	void deleteById(Integer id);
 	
-	Ticket add(Ticket ticket);
+	Ticket add(TicketDto ticket);
 }
