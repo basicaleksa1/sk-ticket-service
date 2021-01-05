@@ -16,6 +16,17 @@ public class Ticket {
 	private Integer userId;
 	@Column(nullable=false, columnDefinition="int")
 	private Integer flightId;
+	@Column
+	private String status;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	/**
 	 * @return the id
 	 */

@@ -2,21 +2,22 @@ package skprojekat.ticketservice.mapper;
 
 import org.springframework.stereotype.Component;
 
-import skprojekat.ticketservice.dto.TicketDto;
+import skprojekat.ticketservice.dto.TicketCreateDto;
 import skprojekat.ticketservice.model.Ticket;
 
 @Component
 public class TicketMapper {
 
-	public TicketDto ticketToTicketDto(Ticket ticket) {
-		TicketDto ticketDto = new TicketDto(ticket.getFlightId(), ticket.getUserId());
-		return ticketDto;
+	public TicketCreateDto ticketToTicketDto(Ticket ticket) {
+		TicketCreateDto ticketCreateDto = new TicketCreateDto(ticket.getFlightId(), ticket.getUserId(), ticket.getStatus());
+		return ticketCreateDto;
 	}
 	
-	public Ticket ticketDtoToTicket(TicketDto ticketDto) {
+	public Ticket ticketDtoToTicket(TicketCreateDto ticketCreateDto) {
 		Ticket ticket = new Ticket();
-		ticket.setFlightId(ticketDto.getFlightId());
-		ticket.setUserId(ticketDto.getUserId());
+		ticket.setFlightId(ticketCreateDto.getFlightId());
+		ticket.setUserId(ticketCreateDto.getUserId());
+		ticket.setStatus("ACTIVE");
 		return ticket;
 	}
 	

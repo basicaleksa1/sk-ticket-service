@@ -1,20 +1,31 @@
 package skprojekat.ticketservice.dto;
 
-public class TicketDto {
+public class TicketCreateDto {
 
 	private Integer flightId;
 	
 	private Integer userId;
 
-	public TicketDto(Integer flightId, Integer userId) {
+	private String status;
+
+	public TicketCreateDto(Integer flightId, Integer userId, String status) {
 		this.flightId = flightId;
 		this.userId = userId;
+		this.status = status;
 	}
 	
-	public TicketDto() {
+	public TicketCreateDto() {
 		
 	}
-	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	/**
 	 * @return the flightId
 	 */

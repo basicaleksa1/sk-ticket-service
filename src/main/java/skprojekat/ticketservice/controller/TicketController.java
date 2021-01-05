@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import skprojekat.ticketservice.dto.TicketDto;
+import skprojekat.ticketservice.dto.TicketCreateDto;
 import skprojekat.ticketservice.model.Ticket;
 import skprojekat.ticketservice.service.TicketService;
 import springfox.documentation.annotations.ApiIgnore;
@@ -34,7 +34,7 @@ public class TicketController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Ticket> add(@RequestBody TicketDto ticket){
+	public ResponseEntity<Ticket> add(@RequestBody TicketCreateDto ticket){
 		return new ResponseEntity<Ticket>(ticketService.add(ticket), HttpStatus.CREATED);
 	}
 	

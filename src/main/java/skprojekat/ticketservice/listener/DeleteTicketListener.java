@@ -10,14 +10,18 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import skprojekat.ticketservice.service.TicketService;
 
 @Component
 public class DeleteTicketListener {
 	
 	private ObjectMapper objectMapper;
-	
-	public DeleteTicketListener(ObjectMapper objectMapper) {
+	private TicketService ticketService;
+
+
+	public DeleteTicketListener(ObjectMapper objectMapper, TicketService ticketService) {
 		this.objectMapper = objectMapper;
+		this.ticketService = ticketService;
 	}
 
 	@JmsListener(destination="${destination.delete_flight}", concurrency = "5-10")
@@ -26,7 +30,7 @@ public class DeleteTicketListener {
 			String jsonText = ((TextMessage)message).getText();
 			try {
 				Integer flightId = objectMapper.readValue(jsonText, Integer.class);
-				System.out.println(flightId);
+				ticketService.deleteAllByFlightId(flightId);
 			} catch (JsonMappingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
