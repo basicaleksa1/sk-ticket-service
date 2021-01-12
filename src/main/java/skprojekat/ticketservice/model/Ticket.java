@@ -19,6 +19,17 @@ public class Ticket {
 	@Column
 	private String status;
 
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	@Column
+	private Double price;
+
 	public String getStatus() {
 		return status;
 	}

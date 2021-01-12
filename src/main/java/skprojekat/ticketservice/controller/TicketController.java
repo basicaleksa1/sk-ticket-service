@@ -5,12 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import skprojekat.ticketservice.dto.TicketCreateDto;
 import skprojekat.ticketservice.model.Ticket;
@@ -34,8 +29,8 @@ public class TicketController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Ticket> add(@RequestBody TicketCreateDto ticket){
-		return new ResponseEntity<Ticket>(ticketService.add(ticket), HttpStatus.CREATED);
+	public ResponseEntity<Ticket> add(@RequestHeader("Authorization") String authorization, Integer flightId){
+		return new ResponseEntity<Ticket>(ticketService.add(authorization, flightId), HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/id")

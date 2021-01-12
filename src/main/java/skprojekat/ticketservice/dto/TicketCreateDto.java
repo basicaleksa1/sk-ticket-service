@@ -8,10 +8,13 @@ public class TicketCreateDto {
 
 	private String status;
 
-	public TicketCreateDto(Integer flightId, Integer userId, String status) {
+	private Double price;
+
+	public TicketCreateDto(Integer flightId, Integer userId, String status, Double price) {
 		this.flightId = flightId;
 		this.userId = userId;
 		this.status = status;
+		this.price = price;
 	}
 	
 	public TicketCreateDto() {

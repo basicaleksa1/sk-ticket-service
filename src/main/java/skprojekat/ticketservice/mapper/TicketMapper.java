@@ -9,7 +9,7 @@ import skprojekat.ticketservice.model.Ticket;
 public class TicketMapper {
 
 	public TicketCreateDto ticketToTicketDto(Ticket ticket) {
-		TicketCreateDto ticketCreateDto = new TicketCreateDto(ticket.getFlightId(), ticket.getUserId(), ticket.getStatus());
+		TicketCreateDto ticketCreateDto = new TicketCreateDto(ticket.getFlightId(), ticket.getUserId(), ticket.getStatus(), ticket.getPrice());
 		return ticketCreateDto;
 	}
 	

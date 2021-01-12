@@ -16,5 +16,5 @@ public interface TicketService {
 	
 	void deleteById(Integer id);
 	
-	Ticket add(TicketCreateDto ticket);
+	Ticket add(String authorization, Integer flightId);
 }
