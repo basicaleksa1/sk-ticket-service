@@ -18,6 +18,7 @@ public class TicketMapper {
 		ticket.setFlightId(ticketCreateDto.getFlightId());
 		ticket.setUserId(ticketCreateDto.getUserId());
 		ticket.setStatus("ACTIVE");
+		ticket.setPrice(ticketCreateDto.getPrice());
 		return ticket;
 	}
 	

@@ -90,6 +90,7 @@ public class TicketServiceImpl implements TicketService{
 		FlightDto let = flightDto.getBody();
 
 		Double ticketPrice = let.getPrice() - let.getPrice() * korisnik.getRank().getPopust() / 100;
+		System.out.println(ticketPrice);
 
 		TicketCreateDto ticket = new TicketCreateDto(let.getId(), korisnik.getId(), "ACTIVE", ticketPrice);
 
