@@ -12,6 +12,8 @@ import skprojekat.ticketservice.model.Ticket;
 import skprojekat.ticketservice.service.TicketService;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/ticket")
 public class TicketController {
@@ -23,8 +25,8 @@ public class TicketController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<Page<Ticket>> findAll(@ApiIgnore Pageable pageable){
-		return new ResponseEntity<>(ticketService.findAll(pageable), HttpStatus.OK);
+	public ResponseEntity<List<Ticket>> findAll(@RequestHeader("Authorization") String authorization){
+		return new ResponseEntity<>(ticketService.findAllByUserId(authorization), HttpStatus.OK);
 		
 	}
 	

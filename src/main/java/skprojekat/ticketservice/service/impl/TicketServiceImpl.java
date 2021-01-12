@@ -56,15 +56,18 @@ public class TicketServiceImpl implements TicketService{
 	}
 
 	@Override
-	public Page<Ticket> findAll(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Ticket> findAllByUserId(String authorization) {
+		Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authorization.split(" ")[1]).getBody();
+		Integer id = claims.get("id", Integer.class);
+
+		return ticketRepository.findAllByUserId(id);
 	}
 
 	@Override
 	public void deleteById(Integer id) {
-
+		ticketRepository.deleteById(id);
 	}
+
 
 	@Override
 	public Ticket add(String authorization, Integer flightId) {
@@ -105,6 +108,7 @@ public class TicketServiceImpl implements TicketService{
 				entitet, UserDto.class);
 
 		System.out.println(flightDto.getBody().getId());
+		Ticket karta = ticketMapper.ticketDtoToTicket(ticket);
 
 		ticketRepository.save(ticketMapper.ticketDtoToTicket(ticket));
 		return ticketMapper.ticketDtoToTicket(ticket);

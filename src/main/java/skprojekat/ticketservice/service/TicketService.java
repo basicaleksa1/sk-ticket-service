@@ -7,12 +7,14 @@ import org.springframework.stereotype.Service;
 import skprojekat.ticketservice.dto.TicketCreateDto;
 import skprojekat.ticketservice.model.Ticket;
 
+import java.util.List;
+
 @Service
 public interface TicketService {
 
 	void deleteAllByFlightId(Integer id);
-	
-	Page<Ticket> findAll(Pageable pageable);
+
+	List<Ticket> findAllByUserId(String authorization);
 	
 	void deleteById(Integer id);
 	

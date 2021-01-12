@@ -18,6 +18,16 @@ public class Ticket {
 	private Integer flightId;
 	@Column
 	private String status;
+	@Column
+	private Integer creditCard;
+
+	public Integer getCreditCard() {
+		return creditCard;
+	}
+
+	public void setCreditCard(Integer creditCard) {
+		this.creditCard = creditCard;
+	}
 
 	public Double getPrice() {
 		return price;
